@@ -4,6 +4,8 @@ Vim, bash, etc.
 
 - [Plugins](#plugins)
 - [Init.vim Notes](#init-notes)
+- - [Settings](#settings)
+- - [Keybindings](#keybindings)
 
 
 ## Plugins
@@ -135,6 +137,198 @@ Required for vim-session
 
 Vim note taking.
 
----
+
+
+
 
 ## Init Notes
+
+### Settings
+
+>`set undolevels=1000`  
+>  
+>Allows you more undo history
+
+---
+
+>`set splitright`  
+>`set splitbelow`  
+>  
+>New splits will open to right and bottom by default.
+
+---
+
+>`set foldmethod=indent|  |`  
+>`set foldlevel=99`  
+>  
+>Indents folded code and searches for foldable code up to 99 levels deep.
+
+---
+
+>`set textwidth=80`   
+>`set columncolor=+1`   
+>   
+>Highlights a vertical column at column 80.
+
+---
+
+>`augroup numbertoggle`   
+>`	autocmd!`   
+>`	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber`   
+>`	autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber`   
+>`augroup end`   
+>   
+>When you're in normal mode, line numbers will show as relative.   
+>When you're in insert mode, they change to absolute numbers.   
+
+---
+
+>`hi CursorLineNr term=bold ctermfg=Yellow guifg=yellow gui=bold`   
+>`hi MatchParen cterm=bold ctermfg=white ctermbg=red gui=bold guifg=white guibg=red`   
+>`hi Cursor cterm=none ctermfg=black ctermbg=white gui=none guifg=black guibg=white`   
+>   
+>CursorLineNr changes the current line number to yellow to make it stand out.   
+>MatchParen makes matching pairs of brackets red with white text to make it stand out.   
+>Cursor makes the cursor square white with black text.
+
+
+
+
+### Keybindings
+
+>`map <Space> <Leader>`   
+>   
+>Makes space key the leader key for non-insert mode.
+  
+----
+
+>`set pastetoggle=<F2>`    
+>   
+>F2 toggles between normal vim paste and being able to paste from the system clipboard
+
+---
+
+>`nnoremap <silent> <CR> :noh<CR><CR>`   
+>   
+>Enter key will clear highlighted search results as well as default enter key return function
+
+---
+
+>`nnoremap <C-J> <C-W><C-J>`   
+>`nnoremap <C-K> <C-W><C-K>`   
+>`nnoremap <C-L> <C-W><C-L>`   
+>`nnoremap ,<C-H> <C-W><C-H>`   
+>   
+>When control is held down in normal mode, movement keys hjkl will move between splits in that direction.
+
+---
+
+>`nnoremap <C-=> 5<C-W>+`   
+>`nnoremap <C--> 5<C-W>-`   
+>`nnoremap <C-,> 5<C-W><`   
+>`nnoremap <C-.> 5<C-W>>`   
+>   
+>Control = and - increases and decreases the split's height.   
+>Control , and . increases and decreases the split's width.
+
+---
+
+>`nnoremap j gj`   
+>`nnoremap k gk`   
+>   
+>If textwrap mode is enabled, j and k will move down to the wordwrapped line as you would expect instead of skipping the line.
+
+---
+
+>`nnoremap <silent> <leader>u :GundoToggle<CR>`   
+>   
+>"space u" will toggle the Gundo Undo Tree window.
+
+---
+
+>`nnoremap <leader><space> za`   
+>   
+>"space za" will fold/unfold code.
+
+---
+
+>`inoremap jj <ESC>`   
+>   
+>"jj" will escape back to normal mode.
+
+---
+
+>`nnoremap <leader>v :vsplit`   
+>   
+>"space v" will vertical split the window.
+
+---
+
+>`nnoremap <leader>h :split`   
+>    
+>"space h" will horizontally split the window.
+
+---
+
+>`nnoremap <silent> <nowait> <leader>q :bp<CR>`   
+>`nnoremap <silent> <nowait> <leader>w :bn<CR>`   
+>   
+>"space q" will go to the previous buffer   
+>"space w" goes to the next buffer.
+
+---
+
+>`nnoremap <silent> <nowait> <leader>a :tabp<CR>`   
+>`nnoremap <silent> <nowait> <leader>s :tabn<CR>`   
+>   
+>"space a" will go to previous tab.   
+>"space s" will go to next tab.
+
+---
+
+>`nnoremap <leader>z :Files<CR>`   
+>   
+>"space z" will open up the fzf file dialog to fuzzy find and open a new file.
+
+---
+
+>`nnoremap <leader>x :cd <C-R>=expand("%:p:h")<CR>`   
+>   
+>"space x" enters the :cd command and autofills with the current working directory
+
+---
+
+>`vnoremap J :m '>+1<CR>gv=gv`   
+>`vnoremap K :m '<-2<CR>gv=gv`   
+>   
+>J while in visual mode will move the selected code up a line.   
+>K while in visual mode will move the selected code down a line.
+
+---
+
+>`nnoremap <leader>gs :G<CR>`   
+>   
+>"space gs" shows git status from fugitive plugin.
+
+---
+
+>`nnoremap <leader>gf :diffget //2<CR>`   
+>   
+>While doing diffget, will select from left file.
+   
+---
+ 
+>`nnoremap <leader>gj :diffget //3<CR>`   
+>   
+>While doing gitdiff, will select from right file.
+
+---
+
+>`map <C-n> :NERDTreeToggle<CR>`   
+>   
+>Control-n NERDTree toggle.
+
+---
+
+
+  
