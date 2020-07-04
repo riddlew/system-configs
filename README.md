@@ -11,7 +11,7 @@ Vim, bash, etc.
 
 ## Important Information
 
-I highly suggest installing Denite and FZF as they make openinig and finding files so much faster and easier. There are major improvements that can be added to Denite that I've added in my init file that you can read about  at [https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861).
+I highly suggest installing Denite and FZF as they make opening and finding files so much faster and easier. There are major improvements that can be added to Denite that I've added in my init file that you can read about  at [https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861).
 
 These changes require that you have FZF and RipGrep installed on your system. If you are on Windows, they can be installed with a package manager such as Chocolatey.
 
