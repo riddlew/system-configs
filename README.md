@@ -2,6 +2,10 @@
 Vim, bash, etc.
 
 
+- ![Plugins](#plugins)
+- ![Init.vim Notes](#init-vim-notes)
+
+
 ## Plugins
 
 ### denite
@@ -132,3 +136,5 @@ Required for vim-session
 Vim note taking.
 
 ---
+
+## Init.vim Notes
