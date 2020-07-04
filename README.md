@@ -15,6 +15,8 @@ I highly suggest installing Denite and FZF as they make opening and finding file
 
 These changes require that you have FZF and RipGrep installed on your system. If you are on Windows, they can be installed with a package manager such as Chocolatey.
 
+1 additional plugin I have not included but have recently installed is [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks). This plugin is very useful as you can bookmark spots in your files and jump back to them (and they can be configured to save per file so you don't use them when you close the buffer).
+
 
 ## How To Use
 
