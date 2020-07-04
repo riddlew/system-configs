@@ -100,6 +100,36 @@ Shows diff changes in the gutter (next to line numbers)
 
 ---
 
+### GV
+[Link to GV](https://github.com/junegunn/gv.vim)
+
+Vim commit browser.
+
+![GV image](https://cloud.githubusercontent.com/assets/700826/12355378/8bbf0834-bbdf-11e5-9389-1aba7cd1fec1.png)
+
+---
+
+### Easy Motion
+[Link to easy motion](https://github.com/easymotion/vim-easymotion)
+
+Easily jump to any word, letter, or line both in file and across split windows.
+
+![em image](https://camo.githubusercontent.com/d5f800b9602faaeccc2738c302776a8a11797a0e/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333739373036322f323033393335392f61386539333864362d383939662d313165332d383738392d3630303235656138333635362e676966)
+![em image 2](https://raw.githubusercontent.com/haya14busa/i/2753bd4dd1dfdf5962dbdbffabf24244e4e14243/easymotion/overwin-motions.gif)
+
+---
+
+### Easy Align
+[Link to easy align](https://github.com/junegunn/vim-easy-align)
+
+Commands for aligning tables, signs and commas, etc.
+
+![ea image](https://raw.githubusercontent.com/junegunn/i/master/easy-align/equals.gif)
+![ea image 2](https://raw.githubusercontent.com/junegunn/i/master/easy-align/spaces.gif)
+![ea image 3](https://raw.githubusercontent.com/junegunn/i/master/easy-align/tables.gif)
+
+---
+
 ### tmuxline
 [Link to tmuxline](https://github.com/edkolev/tmuxline.vim)
 
