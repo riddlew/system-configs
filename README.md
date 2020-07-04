@@ -26,7 +26,7 @@ This assumes that your init file will include all of the plugins needed in my in
 
 **Using Denite (fzf and ripgrep required)**
 `<Leader>;`
-" " will bring up a Denite window to search for open buffers with fuzzy finding. Easier than sorting through :buffers.
+" ;" will bring up a Denite window to search for open buffers with fuzzy finding. Easier than sorting through :buffers.
 
 `<Leader>dir`
 " dir" will bring up a Denite window to search for files in your current directory (directory you opened vim from).
