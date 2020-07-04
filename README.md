@@ -72,7 +72,7 @@ I recommend these binding due to being a little bit easier to remember:
 " jref" to jump to references of symbol under cursor.
 
 `nmap <silent> <leader>jimp <Plug>(coc-implementation)`
-" nmap" to jump to implementation of current symbol.
+" jimp" to jump to implementation of current symbol.
 
 `nmap <silent> <leader>jsymbols <plug>(coc-implementation)`
 " jsymbols" to fuzzy search current project symbols.
