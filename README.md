@@ -1,11 +1,81 @@
 # system-configs
 Vim, bash, etc.
 
-
+- [Important Information](#important-information)
+- [How To Use](#how-to-use)
 - [Plugins](#plugins)
 - [Init.vim Notes](#init-notes)
 - - [Settings](#settings)
 - - [Keybindings](#keybindings)
+
+
+## Important Information
+
+I highly suggest installing Denite and FZF as they make openinig and finding files so much faster and easier. There are major improvements that can be added to Denite that I've added in my init file that you can read about  at [https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861).
+
+These changes require that you have FZF and RipGrep installed on your system. If you are on Windows, they can be installed with a package manager such as Chocolatey.
+
+
+## How To Use
+
+This assumes that your init file will include all of the plugins needed in my init file and/or keybindings.
+
+**Note:** <Leader> is mapped to the spacebar
+  
+### Denite
+
+**Using Denite (fzf and ripgrep required)**
+`<Leader>;`
+" " will bring up a Denite window to search for open buffers with fuzzy finding. Easier than sorting through :buffers.
+
+`<Leader>dir`
+" dir" will bring up a Denite window to search for files in your current directory (directory you opened vim from).
+
+`<Leader>pwd`
+" pwd" will show you your current directory.
+
+`<Leader>ds`
+" ds" will search current directory for occurences of the term you type in and close if no results.
+
+`<Leader>cds`
+" cds" will search current directory for occurences of the word under the cursor in vim.
+
+**While showing a dropdown of results in Denite**
+`C-;`
+Control-; will allow you to switch between typing in the search box and navigating the results window.
+
+`Esc`
+Exit window with escape key.
+
+`Enter`
+Enter key opens selected file.
+
+`C-t` 
+Control-t opens selected file in new tab.
+
+`C-v`
+Control-v opens selected file in a vertical split.
+
+`C-h`
+Control-h opens selected file in a horizontal split.
+
+### COC
+
+I recommend these binding due to being a little bit easier to remember:
+
+`nmap <silent> <leader>jdef <Plug>(coc-definition)`
+" jdef" to Jump to definition of symbol under cursor.
+
+`nmap <silent> <leader>jref <Plug>(coc-references)`
+" jref" to jump to references of symbol under cursor.
+
+`nmap <silent> <leader>jimp <Plug>(coc-implementation)`
+" nmap" to jump to implementation of current symbol.
+
+`nmap <silent> <leader>jsymbols <plug>(coc-implementation)`
+" jsymbols" to fuzzy search current project symbols.
+
+
 
 
 ## Plugins
