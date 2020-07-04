@@ -124,7 +124,6 @@ call plug#begin("~/.vim/plugged")
 	Plug 'airblade/vim-gitgutter'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-	Plug 'edkolev/promptline.vim'
 	Plug 'zeorin/tmuxline.vim', { 'branch': 'utf8-suppress-error' }
 	Plug 'chrisbra/vim-commentary'
 	Plug 'mhinz/vim-startify'
