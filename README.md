@@ -20,7 +20,7 @@ These changes require that you have FZF and RipGrep installed on your system. If
 
 This assumes that your init file will include all of the plugins needed in my init file and/or keybindings.
 
-**Note:** <Leader> is mapped to the spacebar
+**Note:** `<Leader>` is mapped to the spacebar and is a literal space.
   
 ### Denite
 
