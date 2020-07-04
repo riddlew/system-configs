@@ -2,8 +2,8 @@
 Vim, bash, etc.
 
 
-- ![Plugins](#plugins)
-- ![Init.vim Notes](#init-vim-notes)
+- [Plugins](#plugins)
+- [Init.vim Notes](#init-notes)
 
 
 ## Plugins
@@ -137,4 +137,4 @@ Vim note taking.
 
 ---
 
-## Init.vim Notes
+## Init Notes
