@@ -430,5 +430,42 @@ Vim note taking.
 
 ---
 
+>`nnoremap <leader>gv :GV`   
+>   
+>Toggle Git Commit browser.
+
+---
+
+>`nmap <leader>ea <Plug>(EasyAlign)`
+>`xmap <leader>ea <Plug>(EasyAlign)`
+>   
+>" ea" shortcut for easy align. It's best to view the plugin's page for more info as there are a LOT of options.
+
+---
+
+>`map <leader>emf <Plug>(easymotion-bd-f)`   
+>   
+>" emf" will use easy motion to search by 1 letter and allow you to jump there.
+
+---
+
+>`nmap <leader>ems <plug>(easy-motion-overwin-f2`   
+>   
+>" ems" is the same as above, but searches by 2 letters instead of 1.
+
+---
+
+>`map <leader>eml <plug>(easymotion-bd-jk)`   
+>   
+>" eml" is the same as above, but allows you to jump to the beginning of any line easily.
+
+---
+
+>`map <leader>emw <plug>(easymotion-bd-w)`   
+>   
+>" emw" is the same as ems, but you search per word instead of by letters.
+
+---
+
 
   
