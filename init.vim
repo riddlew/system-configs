@@ -45,7 +45,9 @@ syntax enable
 " Turn on numbers and relative line numbers.
 set number relativenumber
 " Ignore case when searching.
-set ignorecase
+" set ignorecase
+" CHANGE: Search for caps if caps are used
+set smartcase
 " How many character spaces to use for shifting a line.
 set shiftwidth=4
 " How many character spaces to use for soft tab.
@@ -140,6 +142,10 @@ call plug#begin("~/.vim/plugged")
 	Plug 'xolox/vim-session'
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-notes'
+	Plug 'junegunn/gv.vim'
+	Plug 'junegunn/vim-easy-align'
+	Plug 'easymotion/vim-easymotion'
+	"Plug 'majutsushi/tagbar'
 
 	Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
@@ -250,6 +256,22 @@ nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gj :diffget //3<CR>
 " Control-n Toggle NERD Tree.
 map <C-n> :NERDTreeToggle<CR>
+" GV commit browser
+nnoremap <leader>gv :GV<CR>
+" EasyAlign ga remap for normal and visual mode
+nmap <leader>ea <Plug>(EasyAlign)
+xmap <leader>ea <Plug>(EasyAlign)
+" Easy Motion search by 1 char.
+map <leader>emf <Plug>(easymotion-bd-f)
+nmap <leader>emf <plug>(easymotion-overwn-f)
+" Easy motion search by 2 char
+nmap <leader>ems <plug>(easymotion-overwin-f2)
+" Easy motion search by line
+map <leader>eml <plug>(easymotion-bd-jk)
+nmap <leader>eml <plug>(easymotion-overwin-line)
+" Easy motion search by word
+map <leader>emw <plug>(easymotion-bd-w)
+nmap <leader>emw <plug>(easymotion-overwin-w)
 
 
 "==============================================================================
@@ -437,3 +459,36 @@ nmap <silent> <leader>jref <Plug>(coc-references)
 nmap <silent> <leader>jimp <Plug>(coc-implementation)
 nnoremap <silent> <leader>jsymbols :<C-u>CocList -I -N --top symbols<CR>
 
+
+let g:startify_custom_header = [
+			\'  ::::    ::::  :::::::::: :::        :::    ::: :::::::::: :::   ::: :::::::::  :::::::::: :::     ::: ',
+			\'  +:+:+: :+:+:+ :+:        :+:        :+:   :+:  :+:        :+:   :+: :+:    :+: :+:        :+:     :+: ',
+			\'  +:+ +:+:+ +:+ +:+        +:+        +:+  +:+   +:+         +:+ +:+  +:+    +:+ +:+        +:+     +:+ ',
+			\'  +#+  +:+  +#+ +#++:++#   +#+        +#++:++    +#++:++#     +#++:   +#+    +:+ +#++:++#   +#+     +:+ ',
+			\'  +#+       +#+ +#+        +#+        +#+  +#+   +#+           +#+    +#+    +#+ +#+         +#+   +#+  ',
+			\'  #+#       #+# #+#        #+#        #+#   #+#  #+#           #+#    #+#    #+# #+#          #+#+#+#   ',
+			\'  ###       ### ########## ########## ###    ### ##########    ###    #########  ##########     ###     ',
+			\]
+
+
+"let g:startify_custom_header = [
+"			\'       #####   ##    ##             ###       /                                       ##### ##                           ',
+"			\'    ######  /#### #####              ###    #/                                     /#####  /##                           ',
+"			\'   /#   /  /  ##### #####             ##    ##                                   //    /  / ###                          ',
+"			\'  /    /  /   # ##  # ##              ##    ##                                  /     /  /   ###            ##           ',
+"			\'      /  /    #     #                 ##    ##                                       /  /     ###           ##           ',
+"			\'     ## ##    #     #        /##      ##    ##  /##       /##    ##   ####          ## ##      ##    /##     ##    ###   ',
+"			\'     ## ##    #     #       / ###     ##    ## / ###     / ###    ##    ###  /      ## ##      ##   / ###     ##    ###  ',
+"			\'     ## ##    #     #      /   ###    ##    ##/   /     /   ###   ##     ###/       ## ##      ##  /   ###    ##     ### ',
+"			\'     ## ##    #     #     ##    ###   ##    ##   /     ##    ###  ##      ##        ## ##      ## ##    ###   ##      ## ',
+"			\'     ## ##    #     ##    ########    ##    ##  /      ########   ##      ##        ## ##      ## ########    ##      ## ',
+"			\'     #  ##    #     ##    #######     ##    ## ##      #######    ##      ##        #  ##      ## #######     ##      ## ',
+"			\'        /     #      ##   ##          ##    ######     ##         ##      ##           /       /  ##          ##      ## ',
+"			\'       /##/      #      ##   ####    /   ##    ##  ###    ####    /  ##      ##      /###/       /   ####    /   ##      /  ',
+"			\'      /  #####           ##   ######/    ### / ##   ### /  ######/    #########     /   ########/     ######/     ######/   ',
+"			\'     /     ##                  #####      ##/   ##   ##/    #####       #### ###   /       ####        #####       #####    ',
+"			\'     #                                                                        ###  #                                        ',
+"			\'      ##                                                               #####   ###  ##                                      ',
+"			\'                                                                      /#######  /#                                           ',
+"			\'                                                                     /      ###/                                             ',
+"			\]
