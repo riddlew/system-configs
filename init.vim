@@ -677,4 +677,4 @@ endfunction
 nmap <silent> <leader>jdef <Plug>(coc-definition)
 nmap <silent> <leader>jref <Plug>(coc-references)
 nmap <silent> <leader>jimp <Plug>(coc-implementation)
-n			\]
+nnoremap <silent> <leader>jsymbols :<C-u>CocList -I -N --top symbols<CR>
