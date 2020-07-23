@@ -15,6 +15,8 @@ I highly suggest installing Denite and FZF as they make opening and finding file
 
 These changes require that you have FZF and RipGrep installed on your system. If you are on Windows, they can be installed with a package manager such as Chocolatey.
 
+1 additional plugin I have not included but have recently installed is [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks). This plugin is very useful as you can bookmark spots in your files and jump back to them (and they can be configured to save per file so you don't use them when you close the buffer).
+
 
 ## How To Use
 
@@ -70,7 +72,7 @@ I recommend these binding due to being a little bit easier to remember:
 " jref" to jump to references of symbol under cursor.
 
 `nmap <silent> <leader>jimp <Plug>(coc-implementation)`
-" nmap" to jump to implementation of current symbol.
+" jimp" to jump to implementation of current symbol.
 
 `nmap <silent> <leader>jsymbols <plug>(coc-implementation)`
 " jsymbols" to fuzzy search current project symbols.
@@ -97,6 +99,36 @@ Powerful file and fuzzy finding for vim.
 Shows diff changes in the gutter (next to line numbers)
 
 ![gitgutter image](https://raw.githubusercontent.com/airblade/vim-gitgutter/master/screenshot.png)
+
+---
+
+### GV
+[Link to GV](https://github.com/junegunn/gv.vim)
+
+Vim commit browser.
+
+![GV image](https://cloud.githubusercontent.com/assets/700826/12355378/8bbf0834-bbdf-11e5-9389-1aba7cd1fec1.png)
+
+---
+
+### Easy Motion
+[Link to easy motion](https://github.com/easymotion/vim-easymotion)
+
+Easily jump to any word, letter, or line both in file and across split windows.
+
+![em image](https://camo.githubusercontent.com/d5f800b9602faaeccc2738c302776a8a11797a0e/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333739373036322f323033393335392f61386539333864362d383939662d313165332d383738392d3630303235656138333635362e676966)
+![em image 2](https://raw.githubusercontent.com/haya14busa/i/2753bd4dd1dfdf5962dbdbffabf24244e4e14243/easymotion/overwin-motions.gif)
+
+---
+
+### Easy Align
+[Link to easy align](https://github.com/junegunn/vim-easy-align)
+
+Commands for aligning tables, signs and commas, etc.
+
+![ea image](https://raw.githubusercontent.com/junegunn/i/master/easy-align/equals.gif)
+![ea image 2](https://raw.githubusercontent.com/junegunn/i/master/easy-align/spaces.gif)
+![ea image 3](https://raw.githubusercontent.com/junegunn/i/master/easy-align/tables.gif)
 
 ---
 
@@ -397,6 +429,43 @@ Vim note taking.
 >`map <C-n> :NERDTreeToggle<CR>`   
 >   
 >Control-n NERDTree toggle.
+
+---
+
+>`nnoremap <leader>gv :GV`   
+>   
+>Toggle Git Commit browser.
+
+---
+
+>`nmap <leader>ea <Plug>(EasyAlign)`
+>`xmap <leader>ea <Plug>(EasyAlign)`
+>   
+>" ea" shortcut for easy align. It's best to view the plugin's page for more info as there are a LOT of options.
+
+---
+
+>`map <leader>emf <Plug>(easymotion-bd-f)`   
+>   
+>" emf" will use easy motion to search by 1 letter and allow you to jump there.
+
+---
+
+>`nmap <leader>ems <plug>(easy-motion-overwin-f2`   
+>   
+>" ems" is the same as above, but searches by 2 letters instead of 1.
+
+---
+
+>`map <leader>eml <plug>(easymotion-bd-jk)`   
+>   
+>" eml" is the same as above, but allows you to jump to the beginning of any line easily.
+
+---
+
+>`map <leader>emw <plug>(easymotion-bd-w)`   
+>   
+>" emw" is the same as ems, but you search per word instead of by letters.
 
 ---
 
