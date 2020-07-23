@@ -1,122 +1,3 @@
-" Essentials
-set encoding=utf-8
-scriptencoding utf-8
-set nocompatible
-set display=lastline
-" I've been told autoread is useless and doesn't work...
-set autoread
-" Auto indent lines.
-set autoindent
-" Automatic filetype when saved (syntax highlighting and stuff), indenting, etc
-filetype indent plugin on
-" More history
-set history=10000
-" Highlight matching text when searching.
-set hlsearch
-" Searching as you type.
-set incsearch
-" 3 lines of status line at bottom
-set laststatus=2
-" Sets characters for tabs, trailing characters, extends, precedes, and nbps.
-set list lcs=tab:\│\ ,trail:·,extends:≫,precedes:≪,nbsp:¬
-" Mouse support = all
-set mouse=a
-" Hexadecimal format for increment / decrement with ctrl-a and ctrl-z
-set nrformats=hex
-" Affects how tabs work. Begginning of line = shiftwidth, elsewhere will
-" use tabstop and softtabstop.
-set smarttab
-" Max number of tabs.
-set tabpagemax=50
-" Search for tags file in current file directory, then working directory.
-set tags=./tags;,tags
-" Faster redrawing.
-set ttyfast
-" Save variables across sessions.
-set viminfo+=!
-" Tab completion
-set wildmenu
-" Show tab header when at least 2 tabs are open
-set showtabline=2
-" Hides your mode (normal, insert, etc). Do not need this with airline.
-set noshowmode
-" Enable syntax highlighting.
-syntax enable
-" Turn on numbers and relative line numbers.
-set number relativenumber
-" Ignore case when searching.
-" set ignorecase
-" CHANGE: Search for caps if caps are used
-set smartcase
-" How many character spaces to use for shifting a line.
-set shiftwidth=4
-" How many character spaces to use for soft tab.
-set softtabstop=4
-" How many character spaces to use for tab.
-set tabstop=4
-" 1000 undos worth of history.
-set undolevels=1000
-" If line wraps, show +++ to denote line is a linebreak.
-" OLD version: set showbreak=+++\ 
-set showbreak=↳\ 
-" Highlights matching braces {}[]().
-set showmatch
-" Disables visual bell.
-set visualbell
-" Highlights line cursor is on.
-set cursorline
-" Do not redraw when not needed.
-set lazyredraw
-" Default vertical split to the right.
-set splitright
-" Default horizontal split to the bottom.
-set splitbelow
-" How to display folded code.
-set foldmethod=indent		
-" How many levels deep to search for folds.
-set foldlevel=99
-" If word wrap on, only break at characters " ^I!@*-+;:,./?".
-set linebreak
-" Used for text wrapping in number column.
-set cpoptions+=n
-" Set column width to 80
-set textwidth=80
-" Highlight column at textwidth +1
-set colorcolumn=+1
-" Shows last command typed in command line at bottom.
-set showcmd
-" Sets backup file dir to vim path\temp (Windows).
-set backupdir=$VIMRUNTIME\\temp\\
-" Sets vim swap dir to vim path\temp (Windows).
-set directory=$VIMRUNTIME\\temp\\
-" 256 color support for terminal.
-set t_Co=256
-
-
-"==============================================================================
-" AutoCmds
-"==============================================================================
-" Makes comments appear as italics
-highlight Comment gui=italic cterm=italic
-augroup italiccomments
-	autocmd!
-	autocmd ColorScheme * highlight Comment gui=italic cterm=italic
-augroup end
-
-" Relative line numbers when in normal mode, absolute in insert mode.
-augroup numbertoggle
-	autocmd!
-	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-	autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-augroup end
-
-" Startify plugin
-augroup startify
-	autocmd!
-	autocmd FileType startify setlocal nospell
-augroup END
-
-
 "==============================================================================
 " Plugins
 "==============================================================================
@@ -124,10 +5,11 @@ call plug#begin("~/.vim/plugged")
 	Plug 'dracula/vim'
 	Plug 'scrooloose/nerdtree'
 	Plug 'airblade/vim-gitgutter'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	Plug 'itchyny/lightline.vim'
+	"Plug 'vim-airline/vim-airline'
+	"Plug 'vim-airline/vim-airline-themes'
 	Plug 'zeorin/tmuxline.vim', { 'branch': 'utf8-suppress-error' }
-	Plug 'chrisbra/vim-commentary'
+	"Plug 'chrisbra/vim-commentary'
 	Plug 'mhinz/vim-startify'
 	Plug 'mattn/emmet-vim'
 	Plug 'tmhedberg/SimpylFold'
@@ -145,7 +27,24 @@ call plug#begin("~/.vim/plugged")
 	Plug 'junegunn/gv.vim'
 	Plug 'junegunn/vim-easy-align'
 	Plug 'easymotion/vim-easymotion'
+	Plug 'MattesGroeger/vim-bookmarks'
 	"Plug 'majutsushi/tagbar'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'jkramer/vim-checkbox'
+	Plug 'godlygeek/tabular'
+	Plug 'plasticboy/vim-markdown'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for' : ['markdown', 'vim-plug'] }
+	Plug 'preservim/nerdcommenter'
+
+	" To Do
+	" Plug 'AndrewRadev/bufferize.vim'
+	" Plug 'terryma/vim-expand-region'
+	" Plug 'junegunn/vim-peekaboo'
+	" Plug 'airblade/vim-rooter'
+	" Plug 'tpope/vim-repeat'
+	" Plug 'kshenoy/vim-signature'
+	" Plug 'unblevable/quick-scope'
+	" Plug 'svermeulen/vim-yoink'
 
 	Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
@@ -160,55 +59,17 @@ call plug#end()
 
 
 "==============================================================================
-" Color Scheme
-"==============================================================================
-colorscheme onehalfdark
-
-
-"==============================================================================
-" Line Number and matching braces colors.
-"==============================================================================
-" Current line number yellow.
-hi CursorLineNr term=bold ctermfg=Yellow guifg=yellow gui=bold
-" Matching braces / parenthesis white fg red bg.
-hi MatchParen cterm=bold ctermfg=white ctermbg=red gui=bold guifg=white guibg=red
-" Cursor black fg white bg.
-hi Cursor cterm=none ctermfg=black ctermbg=white gui=none guifg=black guibg=white
-
-
-"==============================================================================
-" Airline Settings
-"==============================================================================
-let g:airline_theme='onehalfdark'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_buffers = 1
-
-
-"==============================================================================
-" GitGutter Settings
-"==============================================================================
-let g:gitgutter_map_keys = 0
-
-
-"==============================================================================
-" Gundo Settings
-"==============================================================================
-if has('python3')
-	let g:gundo_prefer_python3=1
-endif
-
-
-"==============================================================================
 " Key Bindings
 "==============================================================================
 " Leader will now be space.
 map <Space> <Leader>
-" F2 toggles between normal pste and system clipboard paste.
+" <space>ln will toggle line numbers (for when I need abs #s).
+noremap <silent> <Leader>ln :call ToggleLineNumbers()<CR>
+" F2 toggles between normal paste and system clipboard paste.
 set pastetoggle=<F2>
-" Enter key will also clear search results.
-nnoremap <silent> <CR> :noh<CR><CR>
+" Esc key will clear search results or return if not highlighted.
+nnoremap <silent> <ESC> :noh<CR><ESC> 
+"nnoremap <silent> <CR> :if v:hlsearch && mode() is 'n' \| :noh<CR> \| else \| <CR> \| endif
 " CTRL HJKL will switch between splits.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -263,7 +124,7 @@ nmap <leader>ea <Plug>(EasyAlign)
 xmap <leader>ea <Plug>(EasyAlign)
 " Easy Motion search by 1 char.
 map <leader>emf <Plug>(easymotion-bd-f)
-nmap <leader>emf <plug>(easymotion-overwn-f)
+nmap <leader>emf <plug>(easymotion-overwin-f)
 " Easy motion search by 2 char
 nmap <leader>ems <plug>(easymotion-overwin-f2)
 " Easy motion search by line
@@ -272,6 +133,368 @@ nmap <leader>eml <plug>(easymotion-overwin-line)
 " Easy motion search by word
 map <leader>emw <plug>(easymotion-bd-w)
 nmap <leader>emw <plug>(easymotion-overwin-w)
+" Bookmarks keybindings
+nmap <leader>bm <Plug>BookmarkToggle
+nmap <leader>bma <Plug>BookmarkAnnotate
+nmap <leader>bms <Plug>BookmarkShowAll
+nmap <leader>bmn <plug>BookmarkNext
+nmap <leader>bmp <plug>BookmarkPrev
+nmap <leader>bmd <plug>BookmarkClear
+nmap <leader>bmj <plug>BookmarkMoveDown
+nmap <leader>bmk <plug>BookmarkMoveUp
+let g:bookmark_no_default_key_mappings = 1
+" Puts the date, time, or both
+nmap <nowait> <leader>datetimeunix :put =strftime('%c')
+nmap <leader>datetime :put =strftime('%m/%d/%y %H:%M:%S')
+nmap <leader>date :put =strftime('%m/%d/%y')
+nmap <nowait> <leader>time :put =strftime('%H:%M:%S')
+" Remap checkbox toggle command
+nmap <silent> <leader>cb :call checkbox#ToggleCB()<CR>
+" Tabular formatting for aligning , | or whatever you want.
+"	Tip: :Tabularize /,/r1c1l0
+"		r c l will align the columns right, center, left
+"		the numbers is how many spaces to pad the match (comma in this example)
+"		* Patterns will repeat if more fields than arguments
+if exists(':Tabularize')
+	nnoremap <nowait> <leader>t= :Tabularize /=<CR>
+	vnoremap <nowait> <leader>t= :Tabularize /=<CR>
+	nnoremap <nowait> <leader>t: :Tabularize /:\zs<CR>
+	vnoremap <nowait> <leader>t: :Tabularize /:\zs<CR>
+	nnoremap <nowait> <leader>t<bar> :Tabularize /<bar><CR>
+	vnoremap <nowait> <leader>t<bar> :Tabularize /<bar><CR>
+endif
+" Table formatting provided by Markdown
+autocmd Filetype markdown nnoremap <buffer> <nowait> <Leader>mdt :TableFormat<CR>
+autocmd Filetype markdown nnoremap <buffer> <Leader>mdp :MarkdownPreview<CR>
+autocmd Filetype markdown nnoremap <buffer> <Leader>mdps :MarkdownPreviewStop<CR>
+" Go to previous selection, yank, then jump back to last edited location.
+" In case I yank text and then realize I need to delete code first, I won't
+" have to search for it again to yank it.
+" This is now redundant, just use gd instead
+"nmap <C-I> :normal! gvyg;p<CR>
+" Don't need these
+map <UP>    <NOP>
+map <DOWN>  <NOP>
+map <LEFT>  <NOP>
+map <RIGHT> <NOP>
+imap <UP>    <NOP>
+imap <DOWN>  <NOP>
+imap <LEFT>  <NOP>
+imap <RIGHT> <NOP>
+vmap <UP>    <NOP>
+vmap <DOWN>  <NOP>
+vmap <LEFT>  <NOP>
+vmap <RIGHT> <NOP>
+" Map gy and gp to yank and paste from register. gy will not use return key
+" in case I want to wank a word or something (except for visual mode).
+nnoremap gp "+p
+nnoremap gy "+y
+vnoremap gy "+y
+" gd in normal and visual mode will delete without overwriting what we just
+" yanked.
+nnoremap gd "_d
+vnoremap gd "_d
+
+
+"==============================================================================
+" Settings
+"==============================================================================
+set encoding=utf-8
+scriptencoding utf-8
+set nocompatible
+set display=lastline
+" I've been told autoread is useless and doesn't work...
+set autoread
+" Auto indent lines.
+set autoindent
+" Automatic filetype when saved (syntax highlighting and stuff), indenting, etc
+filetype indent plugin on
+" More history
+set history=10000
+" Highlight matching text when searching.
+set hlsearch
+" Searching as you type.
+set incsearch
+" 2 lines of status line at bottom
+set laststatus=2
+" Sets characters for tabs, trailing characters, extends, precedes, and nbps.
+set list lcs=tab:\│\ ,trail:·,extends:≫,precedes:≪,nbsp:¬
+" Mouse support = all
+set mouse=a
+" Hexadecimal format for increment / decrement with ctrl-a and ctrl-z
+set nrformats=hex
+" Affects how tabs work. Begginning of line = shiftwidth, elsewhere will
+" use tabstop and softtabstop.
+set smarttab
+" Max number of tabs.
+set tabpagemax=50
+" Search for tags file in current file directory, then working directory.
+set tags=./tags;,tags
+" Faster redrawing.
+set ttyfast
+" Save variables across sessions.
+set viminfo+=!
+" Tab completion
+set wildmenu
+" Show tab header when at least 2 tabs are open
+set showtabline=2
+" Hides your mode (normal, insert, etc). Do not need this with airline.
+set noshowmode
+" Enable syntax highlighting.
+syntax enable
+" Turn on numbers and relative line numbers.
+set number relativenumber
+" Ignore case when searching.
+" set ignorecase
+" CHANGE: Use caps if caps are used when searching.
+set smartcase
+" How many character spaces to use for shifting a line.
+set shiftwidth=4
+" How many character spaces to use for soft tab.
+set softtabstop=4
+" How many character spaces to use for tab.
+set tabstop=4
+" 1000 undos worth of history.
+set undolevels=1000
+" If line wraps, show +++ to denote line is a linebreak.
+" OLD version: set showbreak=+++\ 
+set showbreak=↳\ 
+" Highlights matching braces {}[]().
+set showmatch
+" Disables visual bell.
+set visualbell
+" Highlights line cursor is on.
+set cursorline
+" Do not redraw when not needed.
+set lazyredraw
+" Default vertical split to the right.
+set splitright
+" Default horizontal split to the bottom.
+set splitbelow
+" How to display folded code.
+set foldmethod=indent		
+" How many levels deep to search for folds.
+set foldlevel=99
+" Turn off word wrap
+set nowrap
+"If word wrap on, only break at characters " ^I!@*-+;:,./?".
+set linebreak
+" Used for text wrapping in number column.
+set cpoptions+=n
+" Set column width to 80
+set textwidth=80
+" Highlight column at textwidth +1
+set colorcolumn=+1
+" Shows last command typed in command line at bottom.
+set showcmd
+" Sets backup file dir to vim path\temp (Windows).
+set backupdir=$HOME\\AppData\\Local\\nvim\\temp
+" Sets vim swap dir to vim path\temp (Windows).
+set directory=$HOME\\AppData\\Local\\nvim\\temp
+set backup
+set writebackup
+" 256 color support for terminal.
+set t_Co=256
+" Will scroll window when within 5 lines of the edge. 9999 will keep it
+" centered.
+set scrolloff=5
+" Allow switching buffers without having to save first.
+set hidden
+" If buffer is already open, switch to it instead of new split.
+" Does not work on edit cmd, only buffers cmds like :sb<buffer>
+set switchbuf=useopen
+" Allows subdirectory searching
+set path+=**
+" Shows substitute in real time
+set inccommand=split
+
+
+"==============================================================================
+" AutoCmds
+"==============================================================================
+" Makes comments appear as italics
+"highlight Comment gui=italic cterm=italic
+"augroup italiccomments
+"	autocmd!
+"	autocmd ColorScheme * highlight Comment gui=italic cterm=italic
+"augroup end
+
+" Relative line numbers when in normal mode, absolute in insert mode.
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup end
+
+" Startify plugin
+augroup startify
+	autocmd!
+	autocmd FileType startify setlocal nospell
+augroup END
+
+" Markdown settings
+augroup markdownsettings
+	autocmd!
+	autocmd Filetype markdown setlocal expandtab tabstop=2 softtabstop=2
+	autocmd Filetype markdown setlocal shiftwidth=2 noautoindent nosmartindent
+	autocmd Filetype markdown setlocal indentexpr=""
+augroup END
+
+
+"==============================================================================
+" Custom Functions
+"==============================================================================
+function! g:ToggleLineNumbers()
+	if &relativenumber
+		set norelativenumber
+	else
+		set relativenumber
+	endif
+endfunction
+
+
+"==============================================================================
+" NERD Commenter Settings
+"==============================================================================
+" let g:NERDCustomDelimiters = { 'javascript': { 'left': '{/* ', 'right': ' */}', 'leftAlt': '/*', 'rightAlt': '*/' } }
+let g:NERDCustomDelimiters = {
+	\'typescript': { 'left': '{/* ', 'right': ' */}', 'leftAlt': '/*', 'rightAlt': '*/' }
+\}
+
+
+"==============================================================================
+" Startify Bookmarks
+"==============================================================================
+let g:startify_bookmarks = [
+	\'C:\Users\wgaming1070\AppData\Local\nvim\init.vim',
+\]
+
+let g:startify_custom_indices = [
+	\"a", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "r", "u", "w", "x", "y", "z"
+\]
+
+
+"==============================================================================
+" Markdown-Preview
+"==============================================================================
+let g:mkdp_auto_close = 0
+let g:mkdp_browser='firefox'
+
+
+"==============================================================================
+" Airline Settings
+"==============================================================================
+"let g:airline_theme='base16'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_tabs = 1
+"let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+
+
+"==============================================================================
+" Lightline Settings
+"==============================================================================
+let g:lightline = {
+	\ 'colorscheme': 'one',
+	\ 'active': {
+	\	'left': [
+	\		['mode', 'paste'],
+	\		['gitbranch', 'filename', 'readonly', 'modified']
+	\	],
+	\	'right': [
+	\		['lineinfo'],
+	\		['percent'],
+	\		['fileformat', 'fileencoding', 'filetype', 'charvaluehex']
+	\	]
+	\ },
+	\ 'component': {
+	\	'charvaluehex': '0x%B',
+	\ },
+	\ 'component_function': {
+	\	'gitbranch': 'FugitiveHead',
+	\	'filename': 'LightlineFilename'
+	\ },
+	\ 'mode_map': {
+	\	'n': 'N',
+	\	'i': 'I',
+	\	'R': 'R',
+	\	'v': 'V',
+	\	'V': 'VL',
+	\	"\<C-v>": 'VB',
+	\	'c': 'C',
+	\	's': 'S',
+	\	'S': 'SL',
+	\	"\<C-s>": 'SB',
+	\	't': 'T',
+	\ }
+\ }
+
+function! LightlineFilename()
+	let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+	let modified = &modified ? ' +' : ''
+	return filename . modified
+endfunction
+
+
+"==============================================================================
+" Color Scheme
+"==============================================================================
+colorscheme onehalfdark
+
+" One Dark Colors
+
+" Note to self:
+" To get key characters such as ESC, go to insert mode, hit C-v, and then the
+" key (esc). Should print something similar to ^[
+"
+" red gui=#E06C75 cterm=204 cterm16=1
+" dark_red gui=#BE5046 cterm=196 cterm16=9
+" green gui=#98C379 cterm=114 cterm16=2
+" yellow gui=#E5C07B cterm=180 cterm16=3
+" dark_yellow gui=#D19A66 cterm=173 cterm16=11
+" blue gui=#61AFEF cterm=39 cterm16=4
+" purple gui=#C678DD cterm=170 cterm16=5
+" cyan gui=#56B6C2 cterm=38 cterm16=6
+" white gui=#ABB2BF cterm=145 cterm16=7
+" black gui=#282C34 cterm=235 cterm16=0
+" visual_black gui=NONE cterm=NONE cterm16=0
+" comment_grey gui=#5C6370 cterm=59 cterm16=15
+" gutter_fg_grey gui=#4B5263 cterm=238 cterm16=15
+" cursor_grey gui=#2C323C cterm=236 cterm16=8
+" visual_grey gui=#3E4452 cterm=237 cterm16=15
+" menu_grey gui=#3E4452 cterm=237 cterm16=8
+" special_grey gui=#3B4048 cterm=238 cterm16=15
+" vertsplit gui=#181A1F cterm=59 cterm16=15
+
+
+"==============================================================================
+" Line Number and matching braces colors.
+"==============================================================================
+" Current line number yellow.
+hi CursorLineNr term=bold ctermfg=Yellow guifg=yellow gui=bold
+" Matching braces / parenthesis white fg red bg.
+hi MatchParen cterm=bold ctermfg=white ctermbg=red gui=bold guifg=white guibg=red
+" Cursor black fg white bg.
+hi Cursor cterm=none ctermfg=black ctermbg=white gui=none guifg=black guibg=white
+" Change color of eol, extends, and preceeds.
+hi NonText cterm=none ctermfg=59 guifg=#5C6370 gui=none
+" Change color of nbsp, space, tab, and trail
+hi Whitespace cterm=none ctermfg=59 guifg=#5C6370 gui=none
+
+
+"==============================================================================
+" GitGutter Settings
+"==============================================================================
+let g:gitgutter_map_keys = 0
+
+
+"==============================================================================
+" Gundo Settings
+"==============================================================================
+if has('python3')
+	let g:gundo_prefer_python3=1
+endif
 
 
 "==============================================================================
@@ -372,9 +595,6 @@ inoremap <silent><expr> <TAB>
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
-
-
-
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
 " ============================================================================ "
@@ -457,38 +677,4 @@ endfunction
 nmap <silent> <leader>jdef <Plug>(coc-definition)
 nmap <silent> <leader>jref <Plug>(coc-references)
 nmap <silent> <leader>jimp <Plug>(coc-implementation)
-nnoremap <silent> <leader>jsymbols :<C-u>CocList -I -N --top symbols<CR>
-
-
-let g:startify_custom_header = [
-			\'  ::::    ::::  :::::::::: :::        :::    ::: :::::::::: :::   ::: :::::::::  :::::::::: :::     ::: ',
-			\'  +:+:+: :+:+:+ :+:        :+:        :+:   :+:  :+:        :+:   :+: :+:    :+: :+:        :+:     :+: ',
-			\'  +:+ +:+:+ +:+ +:+        +:+        +:+  +:+   +:+         +:+ +:+  +:+    +:+ +:+        +:+     +:+ ',
-			\'  +#+  +:+  +#+ +#++:++#   +#+        +#++:++    +#++:++#     +#++:   +#+    +:+ +#++:++#   +#+     +:+ ',
-			\'  +#+       +#+ +#+        +#+        +#+  +#+   +#+           +#+    +#+    +#+ +#+         +#+   +#+  ',
-			\'  #+#       #+# #+#        #+#        #+#   #+#  #+#           #+#    #+#    #+# #+#          #+#+#+#   ',
-			\'  ###       ### ########## ########## ###    ### ##########    ###    #########  ##########     ###     ',
-			\]
-
-
-"let g:startify_custom_header = [
-"			\'       #####   ##    ##             ###       /                                       ##### ##                           ',
-"			\'    ######  /#### #####              ###    #/                                     /#####  /##                           ',
-"			\'   /#   /  /  ##### #####             ##    ##                                   //    /  / ###                          ',
-"			\'  /    /  /   # ##  # ##              ##    ##                                  /     /  /   ###            ##           ',
-"			\'      /  /    #     #                 ##    ##                                       /  /     ###           ##           ',
-"			\'     ## ##    #     #        /##      ##    ##  /##       /##    ##   ####          ## ##      ##    /##     ##    ###   ',
-"			\'     ## ##    #     #       / ###     ##    ## / ###     / ###    ##    ###  /      ## ##      ##   / ###     ##    ###  ',
-"			\'     ## ##    #     #      /   ###    ##    ##/   /     /   ###   ##     ###/       ## ##      ##  /   ###    ##     ### ',
-"			\'     ## ##    #     #     ##    ###   ##    ##   /     ##    ###  ##      ##        ## ##      ## ##    ###   ##      ## ',
-"			\'     ## ##    #     ##    ########    ##    ##  /      ########   ##      ##        ## ##      ## ########    ##      ## ',
-"			\'     #  ##    #     ##    #######     ##    ## ##      #######    ##      ##        #  ##      ## #######     ##      ## ',
-"			\'        /     #      ##   ##          ##    ######     ##         ##      ##           /       /  ##          ##      ## ',
-"			\'       /##/      #      ##   ####    /   ##    ##  ###    ####    /  ##      ##      /###/       /   ####    /   ##      /  ',
-"			\'      /  #####           ##   ######/    ### / ##   ### /  ######/    #########     /   ########/     ######/     ######/   ',
-"			\'     /     ##                  #####      ##/   ##   ##/    #####       #### ###   /       ####        #####       #####    ',
-"			\'     #                                                                        ###  #                                        ',
-"			\'      ##                                                               #####   ###  ##                                      ',
-"			\'                                                                      /#######  /#                                           ',
-"			\'                                                                     /      ###/                                             ',
-"			\]
+n			\]
