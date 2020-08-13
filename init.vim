@@ -35,6 +35,8 @@ call plug#begin("~/.vim/plugged")
 	Plug 'plasticboy/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for' : ['markdown', 'vim-plug'] }
 	Plug 'preservim/nerdcommenter'
+	Plug 'leafgarland/typescript-vim'
+	Plug 'peitalin/vim-jsx-typescript'
 
 	" To Do
 	" Plug 'AndrewRadev/bufferize.vim'
@@ -42,10 +44,10 @@ call plug#begin("~/.vim/plugged")
 	" Plug 'junegunn/vim-peekaboo'
 	" Plug 'airblade/vim-rooter'
 	" Plug 'tpope/vim-repeat'
-	" Plug 'kshenoy/vim-signature'
-	" Plug 'unblevable/quick-scope'
+	Plug 'kshenoy/vim-signature'
+	Plug 'unblevable/quick-scope'
 	" Plug 'svermeulen/vim-yoink'
-
+	
 	Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
 	if has ('nvim')
@@ -307,6 +309,8 @@ set switchbuf=useopen
 set path+=**
 " Shows substitute in real time
 set inccommand=split
+" Prevent node files from showing up in file search
+set wildignore+=**/node_modules/**
 
 
 "==============================================================================
@@ -338,6 +342,12 @@ augroup markdownsettings
 	autocmd Filetype markdown setlocal expandtab tabstop=2 softtabstop=2
 	autocmd Filetype markdown setlocal shiftwidth=2 noautoindent nosmartindent
 	autocmd Filetype markdown setlocal indentexpr=""
+augroup END
+
+augroup typescriptsettings
+	autocmd!
+	autocmd BufNewFile,BufRead *.ts set filetype=typescript
+	autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 augroup END
 
 
@@ -510,6 +520,8 @@ else
 	let g:fzf_layout = { "window": "silent botright 16split enew" }
 endif
 
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
 
 "==============================================================================
 " Denite Setup
