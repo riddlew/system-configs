@@ -65,6 +65,8 @@ call plug#end()
 "==============================================================================
 " Leader will now be space.
 map <Space> <Leader>
+" Turn off wrapping lines when they reach the highlight column
+set formatoptions-=t
 " <space>ln will toggle line numbers (for when I need abs #s).
 noremap <silent> <Leader>ln :call ToggleLineNumbers()<CR>
 " F2 toggles between normal paste and system clipboard paste.
@@ -118,35 +120,35 @@ nnoremap <leader>gf :diffget //2<CR>
 " Leader gj gitdiff from right file.
 nnoremap <leader>gj :diffget //3<CR>
 " Control-n Toggle NERD Tree.
-map <C-n> :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 " GV commit browser
 nnoremap <leader>gv :GV<CR>
 " EasyAlign ga remap for normal and visual mode
 nmap <leader>ea <Plug>(EasyAlign)
 xmap <leader>ea <Plug>(EasyAlign)
 " Easy Motion search by 1 char.
-map <leader>emf <Plug>(easymotion-bd-f)
-nmap <leader>emf <plug>(easymotion-overwin-f)
+map <leader>f <Plug>(easymotion-bd-f)
+"nmap <leader>fc <plug>(easymotion-overwin-f)
 " Easy motion search by 2 char
-nmap <leader>ems <plug>(easymotion-overwin-f2)
+"nmap <leader>fc <plug>(easymotion-overwin-f2)
 " Easy motion search by line
-map <leader>eml <plug>(easymotion-bd-jk)
-nmap <leader>eml <plug>(easymotion-overwin-line)
+map <leader>l <plug>(easymotion-bd-jk)
+"nmap <leader>eml <plug>(easymotion-overwin-line)
 " Easy motion search by word
-map <leader>emw <plug>(easymotion-bd-w)
-nmap <leader>emw <plug>(easymotion-overwin-w)
+"map <leader>fw <plug>(easymotion-bd-w)
+"nmap <leader>emw <plug>(easymotion-overwin-w)
 " Bookmarks keybindings
 nmap <leader>bm <Plug>BookmarkToggle
-nmap <leader>bma <Plug>BookmarkAnnotate
-nmap <leader>bms <Plug>BookmarkShowAll
-nmap <leader>bmn <plug>BookmarkNext
-nmap <leader>bmp <plug>BookmarkPrev
-nmap <leader>bmd <plug>BookmarkClear
-nmap <leader>bmj <plug>BookmarkMoveDown
-nmap <leader>bmk <plug>BookmarkMoveUp
+nmap <leader>ba <Plug>BookmarkAnnotate
+nmap <leader>bs <Plug>BookmarkShowAll
+nmap <leader>bn <plug>BookmarkNext
+nmap <leader>bp <plug>BookmarkPrev
+nmap <leader>bc <plug>BookmarkClear
+nmap <leader>bj <plug>BookmarkMoveDown
+nmap <leader>bk <plug>BookmarkMoveUp
 let g:bookmark_no_default_key_mappings = 1
 " Puts the date, time, or both
-nmap <nowait> <leader>datetimeunix :put =strftime('%c')
+nmap <nowait> <leader>unix :put =strftime('%c')
 nmap <leader>datetime :put =strftime('%m/%d/%y %H:%M:%S')
 nmap <leader>date :put =strftime('%m/%d/%y')
 nmap <nowait> <leader>time :put =strftime('%H:%M:%S')
@@ -492,7 +494,6 @@ hi NonText cterm=none ctermfg=59 guifg=#5C6370 gui=none
 " Change color of nbsp, space, tab, and trail
 hi Whitespace cterm=none ctermfg=59 guifg=#5C6370 gui=none
 
-
 "==============================================================================
 " GitGutter Settings
 "==============================================================================
@@ -686,7 +687,7 @@ endfunction
 "   <leader>cr    - Jump to references of current symbol
 "   <leader>ci    - Jump to implementation of current symbol
 "   <leader>cs    - Fuzzy search current project symbols
-nmap <silent> <leader>jdef <Plug>(coc-definition)
-nmap <silent> <leader>jref <Plug>(coc-references)
-nmap <silent> <leader>jimp <Plug>(coc-implementation)
-nnoremap <silent> <leader>jsymbols :<C-u>CocList -I -N --top symbols<CR>
+nmap <silent> <leader>jd <Plug>(coc-definition)
+nmap <silent> <leader>jr <Plug>(coc-references)
+nmap <silent> <leader>ji <Plug>(coc-implementation)
+nnoremap <silent> <leader>js :<C-u>CocList -I -N --top symbols<CR>
